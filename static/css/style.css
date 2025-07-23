@@ -256,3 +256,39 @@ body {
     transform: translate(-50%, -50%) translateZ(-50px);
     pointer-events: none;
 }
+
+@media (max-width: 768px) { /* Esto apunta a pantallas de hasta 768px de ancho (típico para tablets en vertical o móviles) */
+    /* No se necesitan cambios drásticos aquí porque tu diseño ya es bastante compacto */
+    /* Lo que haremos es asegurar que la escala se maneje bien y que el contenido no desborde */
+
+    body {
+        /* Asegura que no haya scroll horizontal en pantallas pequeñas */
+        overflow-x: hidden;
+        /* Puedes ajustar la altura mínima si la brújula es demasiado grande para pantallas muy pequeñas */
+        /* min-height: 100dvh; /* Usa 100dvh para una altura más precisa en móviles */
+    }
+
+    .compass-wrapper {
+        /* Permite escalar la brújula si la pantalla es muy pequeña */
+        /* max-width: 90vw; /* Ocupa hasta el 90% del ancho de la vista */
+        /* max-height: 90vh; /* Y hasta el 90% de la altura de la vista */
+        /* Asegura que la brújula se ajuste si la pantalla es demasiado estrecha */
+        transform: scale(0.9); /* Reduce ligeramente el tamaño si la pantalla es pequeña */
+        /* Puedes usar un breakpoint más específico si quieres que la escala sea más precisa */
+        /* Por ejemplo, en pantallas muy estrechas (< 400px), podrías reducir más */
+    }
+
+    /* Opcional: Ajustar el tamaño de la fuente si es necesario en pantallas muy pequeñas */
+    .north-marker, .east-marker, .south-marker, .west-marker {
+        font-size: 0.9em;
+    }
+}
+
+/* Para pantallas aún más pequeñas (típicamente solo móviles) */
+@media (max-width: 480px) {
+    .compass-wrapper {
+        /* Para pantallas muy estrechas, escala un poco más */
+        transform: scale(0.8);
+        /* Esto evita que la brújula se corte en teléfonos muy pequeños */
+    }
+}
